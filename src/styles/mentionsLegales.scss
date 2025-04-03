@@ -1,0 +1,34 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.mentions-legales {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    font-family: v.$font-title;
+    color: v.$black;
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+  
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 1.5rem;
+      color: v.$primary-color;
+    }
+  
+    p, ul {
+      line-height: 1.6;
+      margin-top: 0.5rem;
+      font-family: 'Times New Roman', Times, serif;
+    }
+  
+    a {
+      color: v.$primary-color;
+      text-decoration: underline;
+    }
+  }
+  

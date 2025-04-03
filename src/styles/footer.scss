@@ -1,0 +1,41 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.footer {
+  background-color: v.$white;
+  color: v.$black;
+  font-family: 'Cormorant Garamond', serif;
+  padding: 1rem 0;
+  text-align: center;
+
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__nav {
+    margin-top: 10px;
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-flex;
+
+      li {
+        margin: 0 10px;
+
+        a {
+          color: v.$black;
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: #ccc;
+          }
+        }
+      }
+    }
+  }
+}

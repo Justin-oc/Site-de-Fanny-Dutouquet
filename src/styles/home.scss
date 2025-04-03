@@ -1,0 +1,61 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.home-page {
+  padding: 2rem;
+
+  .home-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .home-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    .home-section {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      &.right {
+        flex-direction: row-reverse;
+      }
+
+      .home-img {
+        flex: 1;
+        width: 100%;
+        max-width: 500px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      .home-text {
+        flex: 1;
+
+        h2 {
+          font-size: 1.8rem;
+          margin-bottom: 1rem;
+        }
+
+        p {
+          font-size: 1.1rem;
+          line-height: 1.6;
+        }
+      }
+
+      // Ajout du style mobile ici
+      @media (max-width: 576px) {
+        flex-direction: column !important;
+        text-align: center ;
+
+        .home-text {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}

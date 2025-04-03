@@ -1,0 +1,70 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.mariage-page {
+    padding: 2rem;
+    line-height: 1.8;
+  
+    .mariage-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: v.$iron-gray;
+    }
+
+    .mariage-subtitle {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        color: v.$iron-gray;
+        font-weight: 800;
+    }
+  
+    .mariage-description {
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-inline: auto;
+      font-size: 1.2rem;
+    }
+  
+    .mariage-section {
+      margin-bottom: 4rem;
+  
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+  
+      .cover-image {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+  
+        img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 10px;
+        }
+      }
+  
+      .photo-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+  
+        .photo-wrapper {
+          flex: 1 1 200px;
+          max-width: 300px;
+  
+          img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }

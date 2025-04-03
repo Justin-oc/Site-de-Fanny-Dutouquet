@@ -1,0 +1,96 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.portraits-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  
+  .category-block {
+    position: relative;
+    width: 300px;
+    transition: margin 0.3s ease;
+    
+    /* En mode normal, tous les blocs sauf le premier se chevauchent */
+    &:not(:first-child) {
+      margin-left: -50px;
+    }
+    
+    .img-wrapper {
+      width: 100%;
+      max-height: 300px; // Hauteur initiale pour recadrer l'image
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        transition: object-fit 0.3s ease;
+      }
+    }
+    
+    .overlay-text {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      margin: 0;
+      color: #fff;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+    
+    /* Au survol, annulation du chevauchement et révélation complète de l'image */
+    &:hover {
+      margin-left: 0; // On enlève le chevauchement pour ce bloc
+      z-index: 10;
+      
+      .img-wrapper {
+        max-height: none; // Permet d'afficher l'image en entier
+      }
+      
+      .img-wrapper img {
+        object-fit: contain; // Affiche toute l'image
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .portraits-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+
+    .category-block {
+      width: 90% !important;
+      margin-left: 0 !important;
+      margin-bottom: 1.5rem;
+
+      .img-wrapper {
+        max-height: none;
+
+        img {
+          object-fit: cover;
+        }
+      }
+
+      .overlay-text {
+        font-size: 1rem;
+        padding: 0.4rem 0.6rem;
+      }
+    }
+  }
+}
+
+

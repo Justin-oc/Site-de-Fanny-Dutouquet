@@ -1,0 +1,25 @@
+[
+    {
+      "nom": "Domaine 1",
+      "cover": "/mariage/preparatifs/cover-prepa.jpg",
+      "photos": [
+        { "src": "/mariage/12.jpg", "alt": "Préparatifs 1" },
+        { "src": "/mariage/IMA_6609.jpg", "alt": "Préparatifs 2" }
+      ]
+    },
+    {
+      "nom": "Domaine 2",
+      "cover": "/mariage/ceremonie/cover-ceremonie.jpg",
+      "photos": [
+        { "src": "/mariage/ceremonie/ceremonie-1.jpg", "alt": "Cérémonie 1" }
+      ]
+    },
+    {
+      "nom": "Domaine 3",
+      "cover": "/mariage/couple/cover-couple.jpg",
+      "photos": [
+        { "src": "/mariage/couple/couple-1.jpg", "alt": "Couple 1" }
+      ]
+    }
+  ]
+  

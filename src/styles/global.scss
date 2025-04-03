@@ -1,0 +1,30 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    color: v.$black;
+    background-color: v.$white;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .wrapper {
+    min-height: 100vh;       // Le conteneur occupe au moins la hauteur de la fenêtre
+    display: flex;
+    flex-direction: column;  // Organise les enfants verticalement
+  }
+  
+  .content {
+    flex: 1; // Occupe tout l'espace disponible entre le header et le footer
+  }

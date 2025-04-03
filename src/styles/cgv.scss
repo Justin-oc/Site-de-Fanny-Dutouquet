@@ -1,0 +1,33 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.cgv {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    font-family: 'Times New Roman', Times, serif;
+    color: v.$text-color;
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+  
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+      color: v.$primary-color;
+    }
+  
+    p {
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+  
+    .cgv__accept {
+      margin-top: 2rem;
+      font-style: italic;
+      text-align: center;
+    }
+  }
