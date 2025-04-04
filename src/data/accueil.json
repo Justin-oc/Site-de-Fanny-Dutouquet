@@ -1,0 +1,17 @@
+[
+    {
+      title: "Photographe de moments précieux",
+      content: "Immortalisez les instants les plus forts de votre vie : naissance, famille, couple.",
+      img: "/simplicité-1.webp",
+    },
+    {
+      title: "Un regard sensible",
+      content: "Chaque cliché est pensé pour révéler l'émotion du moment avec douceur et naturel.",
+      img: "/douceur-1.webp",
+    },
+    {
+      title: "Une approche personnalisée",
+      content: "Je m'adapte à vos envies pour créer des souvenirs uniques et authentiques.",
+      img: "/emotion-1.webp",
+    }
+];

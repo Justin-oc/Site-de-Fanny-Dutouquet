@@ -1,26 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import '../styles/home.scss';
 
-const sections = [
-  {
-    title: "Photographe de moments précieux",
-    content: "Immortalisez les instants les plus forts de votre vie : naissance, famille, couple.",
-    img: "/simplicité-1.webp",
-  },
-  {
-    title: "Un regard sensible",
-    content: "Chaque cliché est pensé pour révéler l'émotion du moment avec douceur et naturel.",
-    img: "/douceur-1.webp",
-  },
-  {
-    title: "Une approche personnalisée",
-    content: "Je m'adapte à vos envies pour créer des souvenirs uniques et authentiques.",
-    img: "/emotion-1.webp",
-  }
-];
-
 const Home = () => {
+  const [sections, setSections] = useState([]);
+
+  useEffect(() => {
+    const apiUrl = `${import.meta.env.VITE_WP_API}/pages?slug=home`;
+
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        const acf = data[0]?.acf;
+        const blocs = acf?.home_sections || [];
+
+        const formattedSections = blocs.map((bloc) => ({
+          title: bloc.title,
+          content: bloc.content,
+          img: bloc.img.url || bloc.img, // selon retour image (array ou URL)
+        }));
+
+        setSections(formattedSections);
+      });
+  }, []);
+
   return (
     <div className="home-page">
       <motion.h1 

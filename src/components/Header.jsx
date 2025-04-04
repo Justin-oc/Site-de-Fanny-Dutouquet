@@ -1,50 +1,81 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaBars, FaTimes } from 'react-icons/fa';
 import '../styles/Header.scss';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuItems, setMenuItems] = useState([]);
+  const [logoText, setLogoText] = useState('FANNY DUTOUQUET');
+  const [socialLinks, setSocialLinks] = useState({ facebook: '', instagram: '' });
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
+
+  useEffect(() => {
+    const apiUrl = `${import.meta.env.VITE_WP_API}/pages?slug=header`;
+
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        const acf = data[0]?.acf;
+
+        if (acf?.menu_items) {
+          setMenuItems(acf.menu_items); // tableau de { label, url }
+        }
+
+        if (acf?.logo_texte) {
+          setLogoText(acf.logo_texte);
+        }
+
+        setSocialLinks({
+          facebook: acf?.facebook_url || '',
+          instagram: acf?.instagram_url || ''
+        });
+      });
+  }, []);
 
   return (
     <header className="header">
       <div className="header__top">
         <div className="header__logo">
-          <Link to="/">FANNY DUTOUQUET</Link>
-        </div>  
+          <Link to="/">{logoText}</Link>
+        </div>
       </div>
 
       <hr className="header__line" />
-        <div className="header__hamburger-wrapper">
-          <div
-            className={`header__hamburger ${isMenuOpen ? 'open' : ''}`}
-            onClick={toggleMenu}
-            >
-            {isMenuOpen ? <FaTimes /> : <FaBars />}
-          </div>
+
+      <div className="header__hamburger-wrapper">
+        <div
+          className={`header__hamburger ${isMenuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
         </div>
+      </div>
+
       <div className={`header__nav-wrapper ${isMenuOpen ? 'open' : ''}`}>
         <div className="header__social-icons">
-          <a href="https://www.facebook.com/fannydutouquetphotographies/?locale=fr_FR" target="_blank" rel="noopener">
-            <FaFacebook />
-          </a>
-          <a href="https://www.instagram.com/fanny.dutouquet.photographe/" target="_blank" rel="noopener">
-            <FaInstagram />
-          </a>
+          {socialLinks.facebook && (
+            <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer">
+              <FaFacebook />
+            </a>
+          )}
+          {socialLinks.instagram && (
+            <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
+              <FaInstagram />
+            </a>
+          )}
         </div>
 
         <nav className="header__nav">
           <ul onClick={closeMenu}>
             <div className="nav-center">
-              <li><Link to="/home">Accueil</Link></li>
-              <li><Link to="/portraits">Portraits</Link></li>
-              <li><Link to="/mariage">Mariages</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-              <li><Link to="/about">À propos</Link></li>
-              <li className="nav-item--right"><Link to="/awards">Photos primées</Link></li>
+              {menuItems.map((item, index) => (
+                <li key={index}>
+                  <Link to={item.url}>{item.label}</Link>
+                </li>
+              ))}
             </div>
           </ul>
         </nav>

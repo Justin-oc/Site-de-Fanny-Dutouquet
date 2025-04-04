@@ -1,34 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/about.scss';
 
-const sections = [
-  {
-    title: "Qui suis-je ?",
-    content: "Un maximum de trucs à dire"
-  },
-  {
-    title: "Mon parcours",
-    content: "Beacoup de trucs détaillés à dire"
-  },
-  {
-    title: "Ma démarche",
-    content: "Encore plus de choses à dire"
-  }
-];
-
 const About = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const apiUrl = `${import.meta.env.VITE_WP_API}/pages?slug=about`;
+
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((resData) => {
+        if (resData.length > 0) {
+          setData(resData[0]);
+        }
+      });
+  }, []);
+
+  if (!data) return <p>Chargement...</p>;
+
   return (
-    <div className="about-page">
-      {sections.map((section, index) => (
+    <section className="about-page">
+      {data.acf?.blocs_about?.map((bloc, index) => (
         <div
           key={index}
           className={`about-container ${index % 2 === 0 ? 'left' : 'right'}`}
         >
-          <h2>{section.title}</h2>
-          <p>{section.content}</p>
+          <h2>{bloc.titre}</h2>
+          <div dangerouslySetInnerHTML={{ __html: bloc.contenu }} />
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

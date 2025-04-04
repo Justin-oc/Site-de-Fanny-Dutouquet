@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import '../styles/Portraits.scss';
 import AvisGoogle from '../components/AvisGoogle';
 
 function Portraits() {
-  const categories = [
-    { src: "portrait/famille/famille-2.webp", alt: "Famille", label: "Famille", path: "famille" },
-    { src: "portrait/naissance-bébé/naissance-1.webp", alt: "Naissance - Bébé", label: "Naissance-Bébé", path: "naissance-bébé" },
-    { src: "portrait/grossesse/grossesse-1.webp", alt: "Grossesse", label: "Grossesse", path: "grossesse" },
-    { src: "portrait/enfant/enfant-3.webp", alt: "Enfant", label: "Enfant", path: "enfant" },
-    { src: "portrait/canin/chien-2.webp", alt: "Canin", label: "Canin", path: "canin" },
-  ];
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const apiUrl = `${import.meta.env.VITE_WP_API}/pages?slug=portraits`;
+
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        const acf = data[0]?.acf;
+        const rawCategories = acf?.portrait_categories || [];
+
+        const parsed = rawCategories.map((cat) => ({
+          src: cat.image?.url || cat.image,
+          alt: cat.alt || '',
+          label: cat.label,
+          path: cat.path
+        }));
+
+        setCategories(parsed);
+      });
+  }, []);
 
   return (
     <>

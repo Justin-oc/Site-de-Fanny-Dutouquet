@@ -17,7 +17,7 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://formspree.io/f/your-form-id", { // à remplacer par celui de ton compte
+    const response = await fetch(import.meta.env.VITE_FORMSPREE_URL, { 
       method: "POST",
       headers: {
         "Content-Type": "application/json",

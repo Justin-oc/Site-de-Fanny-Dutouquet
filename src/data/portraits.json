@@ -1,0 +1,7 @@
+const categories = [
+    { src: "portrait/famille/famille-2.webp", alt: "Famille", label: "Famille", path: "famille" },
+    { src: "portrait/naissance-bébé/naissance-1.webp", alt: "Naissance - Bébé", label: "Naissance-Bébé", path: "naissance-bébé" },
+    { src: "portrait/grossesse/grossesse-1.webp", alt: "Grossesse", label: "Grossesse", path: "grossesse" },
+    { src: "portrait/enfant/enfant-3.webp", alt: "Enfant", label: "Enfant", path: "enfant" },
+    { src: "portrait/canin/chien-2.webp", alt: "Canin", label: "Canin", path: "canin" },
+  ];
