@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import '../styles/Portraits.scss';
+import '../styles/portraits.scss';
 import AvisGoogle from '../components/AvisGoogle';
 
 function Portraits() {
