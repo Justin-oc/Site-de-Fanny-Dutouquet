@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaBars, FaTimes } from 'react-icons/fa';
-import '../styles/Header.scss';
+import '../styles/header.scss';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

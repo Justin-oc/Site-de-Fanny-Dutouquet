@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import '../styles/Footer.scss';
+import '../styles/footer.scss';
 
 const Footer = () => {
   const [footerLinks, setFooterLinks] = useState([]);
