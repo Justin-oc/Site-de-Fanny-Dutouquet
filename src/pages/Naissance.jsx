@@ -5,7 +5,7 @@ const Naissance = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const apiUrl = `${import.meta.env.VITE_WP_API}/pages?slug=naissance`;
+    const apiUrl = `${import.meta.env.VITE_WP_API}/pages?slug=naissance-bebe`;
 
     fetch(apiUrl)
       .then((res) => res.json())

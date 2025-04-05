@@ -71,8 +71,13 @@ const Header = () => {
         <nav className="header__nav">
           <ul onClick={closeMenu}>
             <div className="nav-center">
-              {menuItems.map((item, index) => (
-                <li key={index}>
+                {menuItems.map((item, index) => (
+                <li
+                  key={index}
+                  className={
+                    item.label.toLowerCase().includes('photos') ? 'nav-item--right' : ''
+                  }
+                >
                   <Link to={item.url}>{item.label}</Link>
                 </li>
               ))}

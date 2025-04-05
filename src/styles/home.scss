@@ -41,16 +41,46 @@
           margin-bottom: 1rem;
         }
 
+        // ✅ Balises générées automatiquement par WordPress
         p {
           font-size: 1.1rem;
           line-height: 1.6;
+          margin-bottom: 1rem;
+        }
+
+        div {
+          margin-bottom: 1.5rem;
+        }
+
+        h3 {
+          font-size: 1.4rem;
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        ul, ol {
+          padding-left: 1.5rem;
+          margin-bottom: 1rem;
+
+          li {
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        a {
+          color: inherit;
+          text-decoration: underline;
+          transition: color 0.2s;
+
+          &:hover {
+            color: #aaa;
+          }
         }
       }
 
-      // Ajout du style mobile ici
       @media (max-width: 576px) {
         flex-direction: column !important;
-        text-align: center ;
+        text-align: center;
 
         .home-text {
           margin-top: 1rem;

@@ -31,11 +31,11 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/portraits" element={<Portraits />} />
           <Route path="/portraits/famille" element={<Famille />} />
-          <Route path="/portraits/naissance-bébé" element={<Naissance />} />
+          <Route path="/portraits/naissance-bebe" element={<Naissance />} />
           <Route path="/portraits/grossesse" element={<Grossesse />} />
           <Route path="/portraits/enfant" element={<Enfant />} />
           <Route path="/portraits/canin" element={<Canin />} />
-          <Route path="/mariage" element={<Wedding />} />
+          <Route path="/wedding" element={<Wedding />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/awards" element={<Awards />} />

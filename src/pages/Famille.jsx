@@ -5,7 +5,7 @@ const Famille = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const apiUrl = `${import.meta.env.VITE_WP_API}/pages?slug=famille`;
+    const apiUrl = `${import.meta.env.VITE_WP_API}/pages?slug=portraits-famille`;
 
     fetch(apiUrl)
       .then((res) => res.json())
