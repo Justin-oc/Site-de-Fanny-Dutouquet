@@ -13,7 +13,7 @@ const GaleriePortraits = ({ titre, description, photos }) => {
     <div className="portrait-page">
       <h1 className="portrait-title">{titre}</h1>
       <div className="portrait-intro">
-        <p>{description}</p>
+      <div dangerouslySetInnerHTML={{ __html: description }} />
       </div>
       <div className="portrait-gallery">
         {photos.map((photo, index) => (
