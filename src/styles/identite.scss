@@ -1,0 +1,45 @@
+@use './variables' as v;
+
+.identite-page {
+  padding: 2rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  color: v.$text-color;
+  font-family: v.$font-title;
+
+  .identite-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: v.$iron-gray;
+  }
+
+  .identite-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    .identite-text {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 700px;
+      text-align: center;
+      color: v.$iron-gray;
+      font-family: v.$font-title;
+    }
+
+    .identite-image {
+      max-width: 800px;
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: v.$border-radius;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        display: block;
+      }
+    }
+  }
+}

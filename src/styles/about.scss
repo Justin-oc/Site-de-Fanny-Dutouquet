@@ -46,6 +46,22 @@
     }
   }
   
+  .about-tarif-image {
+    margin: 4rem auto 2rem;
+    max-width: 900px;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+  
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      object-fit: contain;
+    }
+  }
+
   @keyframes fadeInUp {
     to {
       opacity: 1;

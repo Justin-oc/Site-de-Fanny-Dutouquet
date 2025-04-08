@@ -5,7 +5,6 @@ const Awards = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [acf, setAcf] = useState(null);
-  
 
   useEffect(() => {
     const apiUrl = `${import.meta.env.VITE_WP_API}/pages?slug=awards`;
@@ -14,7 +13,7 @@ const Awards = () => {
       .then(res => res.json())
       .then(data => {
         const acfData = data[0]?.acf;
-      
+
         if (acfData?.awards_photos) {
           const images = acfData.awards_photos.map((img) => ({
             src: img.url,
@@ -22,8 +21,12 @@ const Awards = () => {
           }));
           setPhotos(images);
         }
-      
-        setAcf(acfData); // on stocke ici pour l'utiliser plus bas
+
+        setAcf({
+          ...acfData,
+          description_sup: acfData?.description_sup || '',
+          image_sup: acfData?.image_sup || null,
+        });
       })
       .catch(error => {
         console.error("Erreur lors du chargement des awards :", error);
@@ -44,6 +47,23 @@ const Awards = () => {
   return (
     <section className="awards-page">
       <h2 className="awards-title">Photos primées</h2>
+      {/* Bloc texte supplémentaire */}
+            {acf?.description_sup && (
+              <div
+                className="awards-description"
+                dangerouslySetInnerHTML={{ __html: acf.description_sup }}
+              />
+            )}
+
+            {/* Image supplémentaire */}
+            {acf?.image_sup?.url && (
+              <div className="awards-extra-image">
+                <img
+                  src={acf.image_sup.url}
+                  alt={acf.image_sup.alt || 'Image supplémentaire'}
+                />
+              </div>
+            )}
       {acf?.description && (
         <p
           className="awards-description"
@@ -63,6 +83,9 @@ const Awards = () => {
         ))}
       </div>
 
+      
+
+      {/* Modale */}
       {selectedIndex !== null && (
         <div className="awards-modal" onClick={closeModal}>
           <img

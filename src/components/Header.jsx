@@ -75,7 +75,7 @@ const Header = () => {
                 <li
                   key={index}
                   className={
-                    item.label.toLowerCase().includes('photos') ? 'nav-item--right' : ''
+                    item.label.toLowerCase().includes('photos primées') ? 'nav-item--right' : ''
                   }
                 >
                   <Link to={item.url}>{item.label}</Link>

@@ -9,17 +9,21 @@
   
     .awards-title {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-  
-    .awards-description {
-      font-size: 1.2rem;
       margin-bottom: 2rem;
       color: v.$iron-gray;
     }
   
+    .awards-description {
+      font-size: 1.2rem;
+      margin : 2rem auto;
+      color: v.$iron-gray;
+      font-family: v.$font-title;
+      line-height: 1.6;
+    }
+  
     .awards-gallery {
         display: grid;
+        margin-top: 3rem;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
         justify-items: center;
@@ -44,6 +48,7 @@
             width: auto;
             display: block;
             transition: transform 0.3s ease;
+            margin-bottom: 2rem;
       
             &:hover {
               transform: scale(1.02);
@@ -95,5 +100,21 @@
       .nav-button.right {
         right: 5%;
       }
+    }
+  }
+
+.awards-extra-image {
+    margin: 3rem auto;
+    max-width: 1000px;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+  
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      object-fit: cover;
     }
   }

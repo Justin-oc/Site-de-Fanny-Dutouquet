@@ -14,14 +14,22 @@ const Mariage = () => {
 
         const subtitles = (acf?.wedding_subtitles || []).map((s) => s.subtitle);
 
-        const sections = (acf?.wedding_sections || []).map((s) => ({
-          nom: s.nom,
-          cover: s.cover?.url || s.cover,
-          photos: (s.photos || []).map((img) => ({
-            src: img.url,
-            alt: img.alt || '',
-          })),
-        }));
+        const sections = (acf?.wedding_sections || []).map((s) => {
+          const nom = s.nom?.title || 'Nom non défini';
+          const lienUrl = s.nom?.url || null;
+          const lienTarget = s.nom?.target || '_blank';
+
+          return {
+            nom,
+            lienUrl,
+            lienTarget,
+            cover: s.cover?.url || s.cover,
+            photos: (s.photos || []).map((img) => ({
+              src: img.url,
+              alt: img.alt || '',
+            })),
+          };
+        });
 
         setContent({
           title: acf?.wedding_title,
@@ -38,10 +46,6 @@ const Mariage = () => {
     <div className="mariage-page">
       <h1 className="mariage-title">{content.title}</h1>
 
-      {content.subtitles.map((st, i) => (
-        <p key={i} className="mariage-subtitle">{st}</p>
-      ))}
-
       <p
         className="mariage-description"
         dangerouslySetInnerHTML={{ __html: content.intro }}
@@ -49,10 +53,24 @@ const Mariage = () => {
 
       {content.sections.map((section, index) => (
         <div className="mariage-section" key={index}>
-          <h2 className="section-title">{section.nom}</h2>
+          <h2 className="section-title">
+            {section.lienUrl ? (
+              <a
+                href={section.lienUrl}
+                target={section.lienTarget}
+                rel="noopener noreferrer"
+              >
+                {section.nom}
+              </a>
+            ) : (
+              section.nom
+            )}
+          </h2>
+
           <div className="cover-image">
             <img src={section.cover} alt={`Illustration ${section.nom}`} />
           </div>
+
           <div className="photo-gallery">
             {section.photos.map((photo, i) => (
               <div key={i} className="photo-wrapper">

@@ -4,21 +4,22 @@
 .mariage-page {
     padding: 2rem;
     line-height: 1.8;
-  
+
+    a {
+      text-decoration: none;
+      color: v.$black;
+
+        &:hover {
+          color: v.$iron-gray;
+        }
+    }
+
     .mariage-title {
       text-align: center;
       font-size: 2.5rem;
       color: v.$iron-gray;
     }
 
-    .mariage-subtitle {
-        text-align: center;
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        margin-top: 1rem;
-        color: v.$iron-gray;
-        font-weight: 800;
-    }
   
     .mariage-description {
       text-align: center;

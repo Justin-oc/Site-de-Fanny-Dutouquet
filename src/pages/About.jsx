@@ -29,6 +29,15 @@ const About = () => {
           <div dangerouslySetInnerHTML={{ __html: bloc.contenu }} />
         </div>
       ))}
+      
+    {data.acf?.image_tarifs?.url && (
+      <div className="about-tarif-image">
+        <img
+          src={data.acf.image_tarifs.url}
+          alt={data.acf.image_tarifs.alt || 'Tarifs'}
+        />
+      </div>
+    )}
     </section>
   );
 };

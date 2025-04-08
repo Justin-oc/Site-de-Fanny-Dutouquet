@@ -11,6 +11,7 @@ import Grossesse from './pages/Grossesse';
 import Enfant from './pages/Enfant';
 import Canin from './pages/Canin';
 import Wedding from './pages/Wedding';
+import Identite from './pages/Identite';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Awards from './pages/Awards'
@@ -36,6 +37,7 @@ function App() {
           <Route path="/portraits/enfant" element={<Enfant />} />
           <Route path="/portraits/canin" element={<Canin />} />
           <Route path="/wedding" element={<Wedding />} />
+          <Route path="/photos-identite" element={<Identite />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/awards" element={<Awards />} />
