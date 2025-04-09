@@ -1,37 +1,68 @@
 @use 'variables' as v;
 @use 'mixins' as m;
 
-.portrait-page {
+.galerie-portraits {
   padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
 
-  .portrait-title {
+  .galerie-title {
     font-size: 2.5rem;
     font-family: v.$font-title;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 6rem;
     color: v.$iron-gray;
   }
 
-  .portrait-intro {
-    max-width: 800px;
-    margin: 0 auto 3rem auto;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    text-align: left;
-    color: v.$text-color;
+  .bloc-texte-image {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+
+    &.right {
+      flex-direction: row-reverse;
+    }
+
+    .bloc-texte,
+    .bloc-image {
+      flex: 1 1 45%;
+    }
+
+    .bloc-texte {
+      padding: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: v.$iron-gray;
+      text-align: justify;
+    }
+
+    .bloc-image {
+      padding: 1rem;
+      text-align: center;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
   }
 
-  .portrait-gallery {
+  .galerie-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
 
     .photo-wrapper {
       width: 100%;
-      aspect-ratio: 4 / 3; // force un format paysage
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
 
       img {
         width: 100%;
@@ -40,7 +71,6 @@
         object-position: center;
         display: block;
         transition: transform 0.3s ease;
-        cursor: pointer;
 
         &:hover {
           transform: scale(1.05);
@@ -48,55 +78,85 @@
       }
     }
   }
-}
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
 
-  img {
-    max-width: 90%;
-    max-height: 80%;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  }
-
-  .close-button {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 2rem;
-    color: white;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
-  .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2.5rem;
-    color: white;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    user-select: none;
-
-    &.left {
-      left: 30px;
+    img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     }
 
-    &.right {
+    .close-button {
+      position: absolute;
+      top: 20px;
       right: 30px;
+      font-size: 2rem;
+      color: white;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      color: white;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+
+      &.left {
+        left: 30px;
+      }
+
+      &.right {
+        right: 30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .galerie-portraits {
+    .bloc-texte-image {
+      flex-direction: column !important;
+      align-items: center;
+
+      .bloc-texte,
+      .bloc-image {
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 1rem 0;
+      }
+
+      .bloc-texte {
+        text-align: justify;
+        font-size: 1rem;
+      }
+
+      .bloc-image img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .galerie-grid {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     }
   }
 }

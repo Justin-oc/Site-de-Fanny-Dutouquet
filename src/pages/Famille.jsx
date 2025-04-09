@@ -13,14 +13,21 @@ const Famille = () => {
         if (resData.length > 0) {
           const acf = resData[0].acf;
 
+          // ⚙️ Construction des paragraphes
+          const paragraphes = (acf.blocs_texte_image || []).map((bloc) => ({
+            texte: bloc.texte,
+            image: bloc.image,
+          }));
+
+          // 🖼️ Construction des images de la galerie
           const photos = (acf.famille_photos || []).map((img) => ({
             src: img.url,
-            alt: img.alt || ''
+            alt: img.alt || '',
           }));
 
           setData({
             titre: resData[0].title.rendered,
-            description: acf.description,
+            paragraphes,
             photos,
           });
         }
@@ -32,7 +39,7 @@ const Famille = () => {
   return (
     <GaleriePortraits
       titre={data.titre}
-      description={data.description}
+      paragraphes={data.paragraphes}
       photos={data.photos}
     />
   );

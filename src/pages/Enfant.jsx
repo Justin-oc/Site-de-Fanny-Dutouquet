@@ -11,17 +11,23 @@ const Enfant = () => {
       .then((res) => res.json())
       .then((resData) => {
         if (resData.length > 0) {
-          const page = resData[0];
-          const acf = page.acf || {};
+          const acf = resData[0].acf;
 
+          // ⚙️ Construction des paragraphes
+          const paragraphes = (acf.blocs_texte_image || []).map((bloc) => ({
+            texte: bloc.texte,
+            image: bloc.image,
+          }));
+
+          // 🖼️ Construction des images de la galerie
           const photos = (acf.enfant_photos || []).map((img) => ({
             src: img.url,
             alt: img.alt || '',
           }));
 
           setData({
-            titre: page.title.rendered,
-            description: acf.description,
+            titre: resData[0].title.rendered,
+            paragraphes,
             photos,
           });
         }
@@ -33,7 +39,7 @@ const Enfant = () => {
   return (
     <GaleriePortraits
       titre={data.titre}
-      description={data.description}
+      paragraphes={data.paragraphes}
       photos={data.photos}
     />
   );

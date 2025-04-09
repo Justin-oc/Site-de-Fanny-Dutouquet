@@ -23,10 +23,20 @@ const Naissance = () => {
             alt: img.alt || '',
           }));
 
+          const paragraphesNaissance = [{
+            texte: acf.texte_naissance,
+            image: acf.image_naissance,
+          }];
+
+          const paragraphesBebe = [{
+            texte: acf.texte_bebe,
+            image: acf.image_bebe,
+          }];
+
           setData({
-            descriptionNaissance: acf.description_naissance,
-            descriptionBebe: acf.description_bebe,
+            paragraphesNaissance,
             naissancePhotos,
+            paragraphesBebe,
             bebePhotos,
           });
         }
@@ -39,12 +49,12 @@ const Naissance = () => {
     <>
       <GaleriePortraits
         titre="Portraits de naissance"
-        description={data.descriptionNaissance}
+        paragraphes={data.paragraphesNaissance}
         photos={data.naissancePhotos}
       />
       <GaleriePortraits
         titre="Portraits de bébé"
-        description={data.descriptionBebe}
+        paragraphes={data.paragraphesBebe}
         photos={data.bebePhotos}
       />
     </>
